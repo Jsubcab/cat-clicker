@@ -5,8 +5,7 @@ margin: 0;
 
 .base{
 width: 100%;
-height: 300px;  
-border: 1px solid red;
+height: 300px;
 text-align: middle;
 display: flex;
 flex-wrap: wrap;
@@ -16,4 +15,12 @@ flex-wrap: wrap;
    width: 50%;
    height: 50px;
     text-decoration: blue;
+}
+
+.counter-black-cat {
+    widows: 50%;
+}
+
+.counter-red-cat {
+    widows: 50%;
 }
