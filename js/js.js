@@ -29,11 +29,36 @@ var cats = [{
 }];
 
 for (let name=0; name < boxCat.length; name++) {
-boxCat[name].addEventListener('click', function() {
+boxCat[name].addEventListener('click', function(call) {
     document.querySelector('.base').style.display = 'inline';
+
+var draw = boxCat[name].innerHTML;
+var img = document.createElement("img");
+var spn = document.createElement('span');
+
+    switch(draw) {
+        case 'Frank':
+        //document.querySelector(".counter-red-cat").appendChild(spn).innerHTML = 'Counter:' + boxCat[name].counter;
+        img.setAttribute("src", "image/red-cat.svg");
+        document.querySelector(".counter-red-cat").appendChild(img);
+        image.addEventListener('click', function(){
+            boxCat[name].counter++;
+        });
+
+        break;
+        case 'Lili':
+        break;
+        case 'Pituca':
+        break;
+        case 'Kira':
+        break;
+        case 'Alfredo':
+        break;
+    }
+
 });
 }
-
+/*
 let redNumCounter = 0;
 let node2 = document.createElement("p");
 
@@ -45,3 +70,4 @@ redCat.addEventListener('click', function(){
     redNumCounter++;
     document.getElementById('counter-red').innerHTML = "Counter: " + redNumCounter;
 });
+*/
