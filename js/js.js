@@ -1,7 +1,6 @@
 
     var model = {
-        init: function() {
-            model : [{
+            cats : [{
                 name : 'Frank',
                 count : 0
             },{
@@ -18,24 +17,20 @@
                 count : 0
             }
         ]
-        },
+        ,
 
-        getCats : function() {
-            return this.init.model;
-        }
+        getCats() {
+            return model.cats.forEach();
+            }
+
     };
 
     var octopus = {
         init: function(){
-            model.init();
+
             listView.init();
-
-            this.getCats;
-        },
-
-        getCats : function() {
-            model.getCats();
         }
+
     };
 
     var listView = {
@@ -44,7 +39,11 @@
         },
 
         render : function() {
-            document.createElement("div");
+            model.cats.forEach(
+                function(cat) {
+                     console.log(cat.name);
+                }
+            );
 
         }
     };
