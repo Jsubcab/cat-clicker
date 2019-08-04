@@ -15,3 +15,7 @@ margin: 0;
 .list li:hover {
     background-color: grey;
 }
+
+.form {
+    display: none;
+}

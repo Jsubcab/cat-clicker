@@ -22,7 +22,8 @@
                 img : 'image/9648464288_2516b35537_z.jpg'
             }
         ],
-        current: null
+        current: null,
+        adminButton: null
         
 
     };
@@ -33,6 +34,8 @@
 
             listView.init();
             catView.init();
+            adminPanel.init();
+            savedInfo.init();
         },
 
         getCats: function() {
@@ -54,8 +57,74 @@
 
         getImgCat: function() {
             return model.current.img;
+        },
+
+        getAdminPanelButton: function() {
+            return model.adminButton;
+        },
+
+        setAdminPanelButton: function(choice) {
+            model.adminButton = choice;
         }
 
+    };
+
+    var adminPanel = {
+        init: function() {
+            this.button = document.querySelector(".panelButton");
+            this.nameBox = document.getElementById("form-name");
+            this.image = document.getElementById("form-image");
+            this.clicks = document.getElementById("form-clicks");
+            this.panel = octopus.getAdminPanelButton();
+            var visible = document.querySelector(".form");
+
+            this.button.addEventListener('click', function() {
+                if (this.panel) {
+                    octopus.setAdminPanelButton(false);
+                    visible.style.display = "none";
+                    
+                } else {
+                    octopus.setAdminPanelButton(true);
+                    visible.style.display = "block";
+                   
+                }
+                    
+            });
+            this.render();
+        },
+
+        render: function() {
+            var catSelected = octopus.getCurrentCat();
+            this.nameBox.value = catSelected.name;
+            this.image.value = catSelected.img;
+            this.clicks.value = catSelected.count;
+
+        }
+
+
+    };
+
+    var savedInfo = {
+        init: function() {
+            this.save = document.querySelector("#form-save");
+            this.cancel = document.querySelector("#form-cancel");
+            this.nameBox = document.getElementById("form-name");
+            this.image = document.getElementById("form-image");
+            this.clicks = document.getElementById("form-clicks");
+
+            this.render();
+        },
+        render : function() {
+            this.save.addEventListener('click', function() {
+
+            });
+
+            this.cancel.addEventListener('click', function() {
+                this.nameBox.value = "";
+                this.clicks.value = "";
+                this.image.value = "";
+            });
+        }
     };
 
     var listView = {
@@ -82,6 +151,7 @@
                     return function() {
                         octopus.setCurrentCat(catCopy);
                         catView.render();
+                        adminPanel.render();
                     };
                 })(cat));
                 this.ul.appendChild(li);
@@ -99,6 +169,7 @@
 
             this.catImg.addEventListener('click',function(){
                 octopus.increaseClick();
+                adminPanel.render();
             });
 
 
